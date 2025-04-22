@@ -1,7 +1,9 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 var db = require('mysql');
 var dbconn = require('./db.js');
+var jsonObfuscator = require('json-obfuscator');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -9,6 +11,12 @@ router.get('/', function(req, res) {
 });
 
 /* quiz page. */
+router.get("/getproblems", function(req, res) {
+  const data = require("../public/javascripts/problems.json");
+  const obfuscatedData = jsonObfuscator(data);
+  res.json(obfuscatedData);
+});
+
 router.get('/quiz', function(req, res) {
   var name = req.query.name.trim().slice(0,8);
   if (name.length===0) {res.redirect('/');}

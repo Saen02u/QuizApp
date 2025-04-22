@@ -1,15 +1,18 @@
-fetch("problems.json")
+let _qarrs = [];
+
+fetch("/getproblems")
   .then(response => response.json())
-    .then(_qarrs => {
+    .then(data => {
+      _qarrs = JSON.parse(decryptData(data));
+      shuffle(_qarrs);
       console.log("load success");
+      startQuiz();
     })
   .catch(error => console.error("error:",error));
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
-
-shuffle(_qarrs);
 
 const countdownElement = document.getElementById("countdown");
 const questionElement = document.getElementById("question");
