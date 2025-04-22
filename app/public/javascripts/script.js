@@ -1,4 +1,9 @@
-const _qarrs = JSON.parse(JSON.stringify(_qarr));
+fetch("problems.json")
+  .then(response => response.json())
+    .then(_qarrs => {
+      console.log("load success");
+    })
+  .catch(error => console.error("error:",error));
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
