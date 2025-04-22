@@ -16,30 +16,58 @@ router.get('/quiz', function(req, res) {
 });
 
 router.get('/saveScore', function(req, res) {
-  var name = req.query.name.trim().slice(0,8);
-  var score = Number(req.query.score);
-  var countdown = Number(req.query.countdown);
-  console.log(name, score, countdown);
-  if (name.length===0 && score===NaN && score > 30 && score < 0 && countdown===NaN && countdown > 360 && countdown < 0) {
-    res.redirect('/');
-  } else {
-    dbconn.query(`SELECT * FROM leaderboard WHERE username='${name}' AND score < ${score} OR (score=${score} AND countdown < ${countdown})`, (error, rows) => {
-      if (error) throw error;
-      if (rows.length > 0) {
-        dbconn.query(`UPDATE leaderboard SET score=${score}, countdown=${countdown}, endedtime=CURRENT_TIMESTAMP() WHERE username='${name}'`, (upd_error, upd_rows) => {
-          if (upd_error) throw upd_error;
-          console.log("Success");
-        });
-      } else {
-        dbconn.query(`INSERT INTO leaderboard(username,score,countdown) VALUES ('${name}', ${score}, ${countdown});`, (insert_error, insert_rows) => {
-          if (insert_error) throw insert_error;
-          console.log("Success");
-        });
-      }
-    });
-    res.redirect('/leaderboard');
+  const name = req.query.name?.trim().slice(0, 8) || '';
+  const score = Number(req.query.score);
+  const countdown = Number(req.query.countdown);
+
+  // Validate inputs
+  if (
+    name.length === 0 ||
+    isNaN(score) || score < 0 || score > 30 ||
+    isNaN(countdown) || countdown < 0 || countdown > 360
+  ) {
+    return res.redirect('/');
   }
-})
+
+  // First check if the new score should replace the old one
+  const checkQuery = `
+    SELECT * FROM leaderboard 
+    WHERE username = ? AND (score < ? OR (score = ? AND countdown < ?))
+  `;
+
+  dbconn.query(checkQuery, [name, score, score, countdown], (error, rows) => {
+    if (error) throw error;
+
+    if (rows.length > 0) {
+      // Update existing better score
+      const updateQuery = `
+        UPDATE leaderboard 
+        SET score = ?, countdown = ?, endedtime = CURRENT_TIMESTAMP() 
+        WHERE username = ?
+      `;
+      dbconn.query(updateQuery, [score, countdown, name], (updErr) => {
+        if (updErr) throw updErr;
+        console.log("Score updated");
+        return res.redirect('/leaderboard');
+      });
+    } else {
+      // Try to insert, or ignore if user already exists and has equal/better score
+      const insertQuery = `
+        INSERT INTO leaderboard (username, score, countdown) 
+        VALUES (?, ?, ?)
+        ON DUPLICATE KEY UPDATE 
+          score = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(score), score),
+          countdown = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(countdown), countdown),
+          endedtime = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), CURRENT_TIMESTAMP(), endedtime)
+      `;
+      dbconn.query(insertQuery, [name, score, countdown], (insErr) => {
+        if (insErr) throw insErr;
+        console.log("Score inserted or retained existing better score");
+        return res.redirect('/leaderboard');
+      });
+    }
+  });
+});
 
 router.get('/leaderboard', function(req, res) {
   dbconn.query('SELECT RANK() OVER (ORDER BY score DESC, endedtime, countdown DESC, username) as no,username,score,endedtime FROM leaderboard', (error, rows) => {
