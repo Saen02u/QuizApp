@@ -11,21 +11,22 @@ router.get('/', function(req, res) {
 });
 
 /* quiz page. */
-router.get("/problems", function(req, res) {
-  const key = "Saen02u_4eS_K3y!";
-  const data = require("../public/javascripts/problems.json");
-  const iv = crypto.randomBytes(16);
-  const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
-  let encrypted = cipher.update(text, 'utf8', 'hex');
-  encrypted += cipher.final('hex');
-  return { iv: iv.toString('hex'), encryptedData: en
-  res.json({ data: encrypted, key: Buffer.from(key).toString('base64').toString('hex'), iv: iv.toString('hex') });
-});
-
 router.get('/quiz', function(req, res) {
   var name = req.query.name.trim().slice(0,8);
   if (name.length===0) {res.redirect('/');}
   res.render('quiz', { title: 'System Quiz', name: name});
+});
+
+router.get("/getProblems", function(req, res) {
+  const key = crypto.createHash('sha256').update("Saen02u_4eS_K3y").digest();
+  const data = require("../public/javascripts/problems.json");
+  console.log("succes get raw json");
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
+  const text = JSON.stringify(data);
+  let encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()]);
+  console.log("success encrypt");
+  res.send( key.toString('hex') + '.' + iv.toString('hex') + '.' + encrypted.toString('base64') );
 });
 
 router.get('/saveScore', function(req, res) {

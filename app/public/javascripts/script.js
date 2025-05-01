@@ -1,37 +1,8 @@
 //const _qarrs = JSON.parse(JSON.stringify(_qarr));
 
-async function getProblems(probs) {
-	try {
-		const res = await fetch('/problems');
-		const enc = await res.json();
-		const key = Crypto.enc.Base64.parse(Crypto.enc.Hex.parse(enc.key));
-		const iv = Crypto.enc.Hex.parse(enc.iv);
-		const decrypted = CryptoJS.AES.decrypt(
-			{ ciphertext: CryptoJS.enc.Hex.parse(enc.data) },
-			key,
-			{
-				iv: iv,
-				mode: CryptoJS.mode.CBC,
-				padding: CryptoJS.pad.Pkcs7
-			}
-		);
-		probs.data = decrypted.toString(CryptoJS.enc.Utf8);
-		console.log("problem load success");
-	} catch (error) {
-		console.log("problem load error");
-		location.href = '/';
-	}
-};
-
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
-
-let _qarrsObj = {data: ''};
-getProblems(_qarrsObj);
-const _qarr = _qarrs.data;
-
-shuffle(_qarrs);
 
 const countdownElement = document.getElementById("countdown");
 const questionElement = document.getElementById("question");
@@ -39,12 +10,47 @@ const question2BoxElement = document.getElementById("question2-box");
 const question2Element = document.getElementById("question2");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
-const warpButton = document.getElementById("warp-btn");
-const maxQuestion = _qarrs.length;
+const warpButton = document.getElementById("warp-btn")
 
+let _qarrs = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let timeLeft = 1200;
+const maxQuestion = 30;
+
+async function getProblems() {
+	try {
+		const res = await fetch('/getProblems');
+		const enc = await res.text();
+    //console.log("key.");
+    const parts = enc.split('.')
+		const key = CryptoJS.enc.Hex.parse(parts[0]);
+    //console.log("key.");
+		const iv = CryptoJS.enc.Hex.parse(parts[1]);
+    //console.log("iv.");
+    const ciphertext = CryptoJS.enc.Base64.parse(parts[2]);
+    //console.log("ciphertext.");
+		const decrypted = CryptoJS.AES.decrypt(
+			{ ciphertext: ciphertext },
+			key,
+			{
+				iv: iv,
+				mode: CryptoJS.mode.CBC,
+				padding: CryptoJS.pad.Pkcs7
+			}
+		);
+    //console.log("decrypted (raw):", decrypted);
+    _qarrs = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+    console.log(_qarrs.length);
+    shuffle(_qarrs);
+		console.log("problem load success");
+
+    startQuiz();
+	} catch (error) {
+		console.log("problem load error");
+		location.href = '/';
+  }
+};
 
 function countdown() {
   console.log("Countdown!!!!");
@@ -75,7 +81,7 @@ function showQuestion() {
   resetState();
   let currentQuestion = _qarrs[currentQuestionIndex];
   let questionNo = currentQuestionIndex + 1;
-  questionElement.innerHTML = questionNo+". "+currentQuestion._qstr2;
+  questionElement.innerHTML = questionNo+". "+currentQuestion._qstr;
   question2Element.innerHTML = currentQuestion._qstr2;
   if (currentQuestion._qstr2 == "") {
     question2BoxElement.style.display = "none";
@@ -87,7 +93,7 @@ function showQuestion() {
     button.classList.add("btn");
     answerButtons.appendChild(button);
     if (_ansx.__chk) {
-      button.dataset.correct = _ansx.correct;
+      button.dataset.correct = _ansx.__chk;
     }
     button.addEventListener("click", selectAnswer);
   });
@@ -160,4 +166,4 @@ warpButton.onclick = function() {
 }
 
 
-startQuiz();
+getProblems();
