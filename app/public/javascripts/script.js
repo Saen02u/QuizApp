@@ -1,8 +1,35 @@
-const _qarrs = JSON.parse(JSON.stringify(_qarr));
+//const _qarrs = JSON.parse(JSON.stringify(_qarr));
+
+async function getProblems(probs) {
+	try {
+		const res = await fetch('/problems');
+		const enc = await res.json();
+		const key = Crypto.enc.Base64.parse(Crypto.enc.Hex.parse(enc.key));
+		const iv = Crypto.enc.Hex.parse(enc.iv);
+		const decrypted = CryptoJS.AES.decrypt(
+			{ ciphertext: CryptoJS.enc.Hex.parse(enc.data) },
+			key,
+			{
+				iv: iv,
+				mode: CryptoJS.mode.CBC,
+				padding: CryptoJS.pad.Pkcs7
+			}
+		);
+		probs.data = decrypted.toString(CryptoJS.enc.Utf8);
+		console.log("problem load success");
+	} catch (error) {
+		console.log("problem load error");
+		location.href = '/';
+	}
+};
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
 }
+
+let _qarrsObj = {data: ''};
+getProblems(_qarrsObj);
+const _qarr = _qarrs.data;
 
 shuffle(_qarrs);
 

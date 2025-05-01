@@ -3,6 +3,7 @@ var path = require('path');
 var router = express.Router();
 var db = require('mysql');
 var dbconn = require('./db.js');
+var crypto = require('crypto');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -10,9 +11,15 @@ router.get('/', function(req, res) {
 });
 
 /* quiz page. */
-router.get("/getproblems", function(req, res) {
+router.get("/problems", function(req, res) {
+  const key = "Saen02u_4eS_K3y!";
   const data = require("../public/javascripts/problems.json");
-  res.json(data);
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
+  let encrypted = cipher.update(text, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+  return { iv: iv.toString('hex'), encryptedData: en
+  res.json({ data: encrypted, key: Buffer.from(key).toString('base64').toString('hex'), iv: iv.toString('hex') });
 });
 
 router.get('/quiz', function(req, res) {
