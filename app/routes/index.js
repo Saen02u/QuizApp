@@ -19,7 +19,7 @@ router.get('/quiz', function(req, res) {
 
 router.get("/getProblems", function(req, res) {
   const key = crypto.createHash('sha256').update("Saen02u_4eS_K3y").digest();
-  const data = require("../public/javascripts/problems.json");
+  const data = require("../public/jsons/problems.json");
   console.log("succes get raw json");
   const iv = crypto.randomBytes(16);
   const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
