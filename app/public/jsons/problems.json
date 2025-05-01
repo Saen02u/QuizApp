@@ -222,9 +222,9 @@
   },
   {
     "_qstr": "다음 어셈블리 코드 실행 후 eax의 값으로 옳은 것은?",
-    "_qstr2": "mov $10, %eax\naddl $5, %eax\nsub $3, %eax",
+    "_qstr2": "mov eax, 10\nadd eax, 5\nsub eax, 3",
     "_ansx": [
-      { "__msg": "2", "__chk": true },
+      { "__msg": "12", "__chk": true },
       { "__msg": "3", "__chk": false },
       { "__msg": "5", "__chk": false },
       { "__msg": "10", "__chk": false }
@@ -384,10 +384,10 @@
     "_qstr": "다음은 레지스터와 메모리 상태이다. 코드 2까지 실행 후 rax의 값은?",
     "_qstr2": "[Register]\nrbx = 0x1000\nrcx = 0x20\n=================================\n[Memory]\n0x1020 | 0x0000000000000033\n=================================\n[Code]\n1: lea rax, [rbx + rcx]\n2: add rax, 0x10",
     "_ansx": [
-      { "__msg": "0x1040", "__chk": true },
+      { "__msg": "0x1040", "__chk": false },
       { "__msg": "0x1020", "__chk": false },
       { "__msg": "0x1000", "__chk": false },
-      { "__msg": "0x1030", "__chk": false }
+      { "__msg": "0x1030", "__chk": true }
     ]
   }
 ]

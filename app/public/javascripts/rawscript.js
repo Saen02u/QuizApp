@@ -160,7 +160,7 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-warpButton.onclick = function() {
+warpButton.addEventListener("click", () => {
   usr_name = document.getElementById('usr-name').value;
   location.href = `/saveScore?name=${usr_name}&score=${score}&countdown=${timeLeft}`;
 }
