@@ -14,6 +14,7 @@ const warpButton = document.getElementById("warp-btn")
 
 let _qarrs = [];
 let currentQuestionIndex = 0;
+let currentAnsx = '';
 let score = 0;
 let timeLeft = 900;
 const maxQuestion = 30;
@@ -93,7 +94,7 @@ function showQuestion() {
     button.classList.add("btn");
     answerButtons.appendChild(button);
     if (_ansx.__chk) {
-      button.dataset.correct = _ansx.__chk;
+      currentAnsx = _ansx.__msg;
     }
     button.addEventListener("click", selectAnswer);
   });
@@ -109,8 +110,10 @@ function resetState() {
 }
 
 function selectAnswer(e) {
+  let currentQuestion = _qarrs[currentQuestionIndex];
   const selectedBtn = e.target;
-  const isCorrect = selectedBtn.dataset.correct === "true";
+  const selectedText = selectedBtn.innerHTML;
+  const isCorrect = selectedText === currentAnsx;
   if (isCorrect) {
     selectedBtn.classList.add("correct");
     score++;
@@ -119,7 +122,7 @@ function selectAnswer(e) {
   }
 
   Array.from(answerButtons.children).forEach((button) => {
-    if (button.dataset.correct === "true") {
+    if (button.innerHTML === currentAnsx) {
       button.classList.add("correct");
     }
     button.disabled = true;
