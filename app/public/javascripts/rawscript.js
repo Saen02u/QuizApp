@@ -16,7 +16,7 @@ let _qarrs = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let timeLeft = 900;
-const maxQuestion = 1;
+const maxQuestion = 30;
 
 async function getProblems() {
 	try {
