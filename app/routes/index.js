@@ -31,14 +31,15 @@ router.get("/getProblems", function(req, res) {
 
 router.get('/saveScore', function(req, res) {
   const name = req.query.name?.trim().slice(0, 8) || '';
-  const score = Number(req.query.score);
+  const score = Number(req.query.t2NvWG8);
   const countdown = Number(req.query.countdown);
+  console.log(name, score, countdown);
 
   // Validate inputs
   if (
     name.length === 0 ||
     isNaN(score) || score < 0 || score > 30 ||
-    isNaN(countdown) || countdown < 0 || countdown > 360
+    isNaN(countdown) || countdown < 0 || countdown > 1200
   ) {
     return res.redirect('/');
   }

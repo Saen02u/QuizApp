@@ -54,7 +54,7 @@ body {
   border-bottom: 1px solid #020202;
 }
 .app #title-wrap h1 {
-  width: 80%;
+  width: 60%;
   font-family: "DungGeunMo";
   font-size: 32px;
   color: #313131;
@@ -65,7 +65,7 @@ body {
 }
 
 .app #title-wrap span {
-  width: 10%;
+  width: 20%;
   font-family: "DungGeunMo";
   font-size: 18px;
   color: #313131;

@@ -15,8 +15,8 @@ const warpButton = document.getElementById("warp-btn")
 let _qarrs = [];
 let currentQuestionIndex = 0;
 let score = 0;
-let timeLeft = 1200;
-const maxQuestion = 30;
+let timeLeft = 900;
+const maxQuestion = 1;
 
 async function getProblems() {
 	try {
@@ -41,7 +41,7 @@ async function getProblems() {
 		);
     //console.log("decrypted (raw):", decrypted);
     _qarrs = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
-    console.log(_qarrs.length);
+    //console.log(_qarrs.length);
     shuffle(_qarrs);
 		console.log("problem load success");
 
@@ -71,7 +71,7 @@ function countdown() {
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
-  timeLeft = 1200;
+  timeLeft = 900;
   nextButton.innerHTML = "Next";
   countdown();
   showQuestion();
@@ -161,9 +161,9 @@ nextButton.addEventListener("click", () => {
 });
 
 warpButton.addEventListener("click", () => {
-  usr_name = document.getElementById('usr-name').value;
-  location.href = `/saveScore?name=${usr_name}&score=${score}&countdown=${timeLeft}`;
-}
+  usr_name = document.getElementById('nickname').innerHTML;
+  location.href = `/saveScore?name=${usr_name}&t2NvWG8=${score}&countdown=${timeLeft}`;
+});
 
 
 getProblems();
