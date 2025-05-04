@@ -20,9 +20,6 @@ touch /var/log/mysql-slowquery.log
 chown mysql:mysql /var/log/mysql-slowquery.log
 chmod 644 /var/log/mysql*
 
-#service mariadb restart
-service mariadb restart
-
 USER="toshwm"
 PASSWORD="tltmxpaznlwm"
 
