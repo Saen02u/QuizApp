@@ -9,6 +9,20 @@ service mariadb start
 #edit config file
 cat ./my.cnf >> /etc/mysql/my.cnf
 
+#setting logging file
+touch /var/log/mysql.log
+chown mysql:mysql /var/log/mysql.log
+touch /var/log/mysql-bin.log
+chown mysql:mysql /var/log/mysql-bin.log
+touch /var/log/mysql-error.log
+chown mysql:mysql /var/log/mysql-error.log
+touch /var/log/mysql-slowquery.log
+chown mysql:mysql /var/log/mysql-slowquery.log
+chmod 644 /var/log/mysql*
+
+#service mariadb restart
+service mariadb restart
+
 USER="toshwm"
 PASSWORD="tltmxpaznlwm"
 
