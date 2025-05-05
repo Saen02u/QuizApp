@@ -1,8 +1,0 @@
-USE quiz_db;
-CREATE TABLE IF NOT EXISTS leaderboard (
-    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(20) NOT NULL,
-    score INT NOT NULL,
-    endedtime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    countdown INT NOT NULL
-) DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
