@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var router = express.Router();
-var db = require('mysql');
+var db = require('mysql2');
 var dbconn = require('./db.js');
 var crypto = require('crypto');
 
@@ -46,7 +46,7 @@ router.get('/saveScore', function(req, res) {
 
   // First check if the new score should replace the old one
   const checkQuery = `
-    SELECT * FROM leaderboard 
+    SELECT * FROM leaderboard
     WHERE username = ? AND (score < ? OR (score = ? AND countdown < ?))
   `;
 
@@ -56,8 +56,8 @@ router.get('/saveScore', function(req, res) {
     if (rows.length > 0) {
       // Update existing better score
       const updateQuery = `
-        UPDATE leaderboard 
-        SET score = ?, countdown = ?, endedtime = CURRENT_TIMESTAMP() 
+        UPDATE leaderboard
+        SET score = ?, countdown = ?, endedtime = CURRENT_TIMESTAMP()
         WHERE username = ?
       `;
       dbconn.query(updateQuery, [score, countdown, name], (updErr) => {
@@ -68,9 +68,9 @@ router.get('/saveScore', function(req, res) {
     } else {
       // Try to insert, or ignore if user already exists and has equal/better score
       const insertQuery = `
-        INSERT INTO leaderboard (username, score, countdown) 
+        INSERT INTO leaderboard (username, score, countdown)
         VALUES (?, ?, ?)
-        ON DUPLICATE KEY UPDATE 
+        ON DUPLICATE KEY UPDATE
           score = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(score), score),
           countdown = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(countdown), countdown),
           endedtime = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), CURRENT_TIMESTAMP(), endedtime)

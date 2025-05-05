@@ -1,6 +1,6 @@
 FROM node:22.15-alpine
 
-ENV DOCKERIZE_VERSION v0.9.3
+ENV DOCKERIZE_VERSION=v0.9.3
 
 RUN apk update --no-cache \
     && apk add --no-cache wget openssl \
@@ -14,10 +14,6 @@ RUN npm install
 
 COPY . .
 
-COPY docker-entrypoint.sh ./docker-entrypoint.sh
-
-RUN chmod +x docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
-
-EXPOSE 3000
