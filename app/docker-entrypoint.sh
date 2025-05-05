@@ -1,9 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "✅ docker-entrypoint.sh started"
-
-# 예: DB가 준비될 때까지 대기
+echo "wait mysql_db server"
 dockerize -wait tcp://quiz_db:3306 -timeout 20s
 
-# Node.js 앱 실행
-exec npm start
+echo "start node server"
+npm start
