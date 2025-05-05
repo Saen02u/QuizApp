@@ -1,17 +1,20 @@
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'localhost',
+  host     : 'quiz_db',
+  port     : '3306',
   user     : 'toshwm',
   password : 'tltmxpaznlwm',
-  database : 'QuizApp',
+  database : 'quiz_db',
   dateStrings : 'date'
 });
- 
-connection.connect();
 
-connection.query('SELECT * from leaderboard', (error, rows, fields) => {
-  if (error) throw error;
-  console.log('Leaderboard: ', rows);
+connection.connect((err) => {
+  if (err) {
+    console.error('MySQL 연결 실패:', err);
+    process.exit(1);  // 연결 실패 시 종료
+  }
+
+  console.log('MySQL 연결 성공');
 });
 
 module.exports = connection;
