@@ -82,3 +82,135 @@
 2025-05-05T14:50:59.559172Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
 2025-05-05T14:50:59.559729Z 0 [ERROR] [MY-010119] [Server] Aborting
 2025-05-05T14:50:59.560003Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:45:12.628622Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:45:12.630384Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 81
+2025-05-12T03:45:12.637320Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:45:12.651858Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:45:12.654704Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:45:12.655293Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:46:19.422530Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:46:19.424174Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:46:19.428758Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:46:19.438228Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:46:19.439561Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:46:19.440112Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:47:25.838339Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:47:25.839945Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 79
+2025-05-12T03:47:25.843439Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:47:25.848904Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:47:25.850021Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:47:25.850583Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:48:32.443277Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:48:32.445144Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 79
+2025-05-12T03:48:32.452160Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:48:32.464874Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:48:32.468333Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:48:32.468842Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:49:39.027225Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:49:39.029191Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:49:39.034019Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:49:39.041978Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:49:39.043320Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:49:39.043931Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:50:45.655679Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:50:45.658205Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:50:45.664200Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:50:45.675485Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:50:45.678447Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:50:45.679232Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:51:52.024167Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:51:52.026312Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:51:52.031657Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:51:52.039402Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:51:52.040491Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:51:52.041156Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:53:01.431656Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:53:01.433860Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:53:01.441133Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:53:01.454077Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:53:01.456661Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:53:01.457345Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:54:08.066963Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:54:08.068712Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:54:08.075839Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:54:08.092091Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:54:08.095269Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:54:08.095956Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:55:14.629499Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:55:14.631224Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 79
+2025-05-12T03:55:14.635297Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:55:14.642439Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:55:14.643980Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:55:14.644699Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:56:21.210328Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:56:21.212036Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:56:21.216395Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:56:21.222758Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:56:21.224101Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:56:21.224807Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:57:27.998001Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:57:27.999795Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:57:28.007000Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:57:28.022620Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:57:28.025935Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:57:28.026429Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:58:34.821026Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:58:34.823499Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:58:34.832840Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:58:34.842458Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:58:34.844175Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:58:34.844876Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T03:59:41.512899Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T03:59:41.514720Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T03:59:41.521886Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T03:59:41.535030Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T03:59:41.537363Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T03:59:41.538048Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:00:48.643287Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:00:48.645292Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:00:48.652236Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:00:48.667346Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:00:48.670345Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:00:48.670967Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:01:55.861770Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:01:55.863958Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 79
+2025-05-12T04:01:55.869290Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:01:55.877177Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:01:55.878945Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:01:55.879642Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:03:03.256110Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:03:03.258512Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:03:03.265209Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:03:03.277089Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:03:03.279276Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:03:03.280087Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:04:10.336621Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:04:10.338402Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:04:10.344818Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:04:10.359127Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:04:10.362136Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:04:10.362665Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:05:17.433909Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:05:17.435692Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:05:17.442716Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:05:17.456980Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:05:17.459812Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:05:17.460540Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:06:24.472857Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:06:24.474923Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:06:24.480089Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:06:24.487231Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:06:24.489017Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:06:24.489695Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:07:31.599118Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:07:31.601516Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:07:31.607389Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:07:31.615754Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:07:31.617357Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:07:31.618069Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-05-12T04:08:38.961908Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-05-12T04:08:38.964184Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 8.4.5) initializing of server in progress as process 80
+2025-05-12T04:08:38.970738Z 0 [ERROR] [MY-010457] [Server] --initialize specified but the data directory has files in it. Aborting.
+2025-05-12T04:08:38.986511Z 0 [ERROR] [MY-013236] [Server] The designated data directory /var/lib/mysql/ is unusable. You can remove all files that the server added to it.
+2025-05-12T04:08:38.989088Z 0 [ERROR] [MY-010119] [Server] Aborting
+2025-05-12T04:08:38.989833Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.

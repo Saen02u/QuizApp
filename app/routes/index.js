@@ -29,7 +29,7 @@ router.get("/getProblems", function(req, res) {
   res.send( key.toString('hex') + '.' + iv.toString('hex') + '.' + encrypted.toString('base64') );
 });
 
-router.get('/saveScore', function(req, res) {
+router.get('/saveScore', async function(req, res) {
   const name = req.query.name?.trim().slice(0, 8) || '';
   const score = Number(req.query.t2NvWG8);
   const countdown = Number(req.query.countdown);
@@ -44,51 +44,51 @@ router.get('/saveScore', function(req, res) {
     return res.redirect('/');
   }
 
+  try {
   // First check if the new score should replace the old one
-  const checkQuery = `
-    SELECT * FROM leaderboard
-    WHERE username = ? AND (score < ? OR (score = ? AND countdown < ?))
-  `;
+    const [rows] = await dbconn.query(`
+      SELECT * FROM leaderboard
+      WHERE username = ? AND (score < ? OR (score = ? AND countdown < ?))`,
+      [name, score, score, countdown]
+    );
 
-  dbconn.query(checkQuery, [name, score, score, countdown], (error, rows) => {
-    if (error) throw error;
-
-    if (rows.length > 0) {
+      if (rows.length > 0) {
       // Update existing better score
-      const updateQuery = `
-        UPDATE leaderboard
-        SET score = ?, countdown = ?, endedtime = CURRENT_TIMESTAMP()
-        WHERE username = ?
-      `;
-      dbconn.query(updateQuery, [score, countdown, name], (updErr) => {
-        if (updErr) throw updErr;
+        await dbconn.query(`
+          UPDATE leaderboard
+          SET score = ?, countdown = ?, endedtime = CURRENT_TIMESTAMP()
+          WHERE username = ?`,
+          [score, countdown, name]
+        );
+        console.log(`UPDATE leaderboard SET score=${score}, countdown=${countdown}, endedtime=CURRENT_TIMESTAMP() WHERE username=${name};`);
         console.log("Score updated");
-        return res.redirect('/leaderboard');
-      });
-    } else {
+      } else {
       // Try to insert, or ignore if user already exists and has equal/better score
-      const insertQuery = `
-        INSERT INTO leaderboard (username, score, countdown)
-        VALUES (?, ?, ?)
-        ON DUPLICATE KEY UPDATE
-          score = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(score), score),
-          countdown = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(countdown), countdown),
-          endedtime = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), CURRENT_TIMESTAMP(), endedtime)
-      `;
-      dbconn.query(insertQuery, [name, score, countdown], (insErr) => {
-        if (insErr) throw insErr;
+        await dbconn.query(`
+          INSERT INTO leaderboard (username, score, countdown)
+          VALUES (?, ?, ?)
+          ON DUPLICATE KEY UPDATE
+            score = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(score), score),
+            countdown = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), VALUES(countdown), countdown),
+            endedtime = IF(VALUES(score) > score OR (VALUES(score) = score AND VALUES(countdown) > countdown), CURRENT_TIMESTAMP(), endedtime)`,
+          [name, score, countdown]
+        );
         console.log("Score inserted or retained existing better score");
-        return res.redirect('/leaderboard');
-      });
+      }
+      return res.redirect('/leaderboard');
+    } catch (err) {
+       console.error("DB error:", err);
+       return res.status(500).send("DB error");
     }
-  });
 });
 
 router.get('/leaderboard', function(req, res) {
-  dbconn.query('SELECT RANK() OVER (ORDER BY score DESC, endedtime, countdown DESC, username) as no,username,score,endedtime FROM leaderboard', (error, rows) => {
-    if (error) throw error;
+  try {
+    const [rows] = await dbconn.query('SELECT RANK() OVER (ORDER BY score DESC, endedtime, countdown DESC, username) as no,username,score,endedtime FROM leaderboard');
     res.render('leaderboard', { title: 'System Quiz', rankList: rows });
-  });
-})
+  } catch (err) {
+    console.log("DB error:", err);
+  }
+});
 
 module.exports = router;
