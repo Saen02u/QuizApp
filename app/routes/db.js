@@ -11,4 +11,4 @@ var pool = mysql.createPool({
   dateStrings : 'date'
 });
 
-module.exports = connection;
+module.exports = pool;

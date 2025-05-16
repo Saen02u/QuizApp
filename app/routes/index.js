@@ -82,7 +82,7 @@ router.get('/saveScore', async function(req, res) {
     }
 });
 
-router.get('/leaderboard', function(req, res) {
+router.get('/leaderboard', async function(req, res) {
   try {
     const [rows] = await dbconn.query('SELECT RANK() OVER (ORDER BY score DESC, endedtime, countdown DESC, username) as no,username,score,endedtime FROM leaderboard');
     res.render('leaderboard', { title: 'System Quiz', rankList: rows });
