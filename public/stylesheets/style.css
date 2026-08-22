@@ -5,19 +5,12 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: "S-CoreDream-3Light";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "S-CoreDream-3Light";
+  font-family: "DungGeunMo";
 }
 
 body {
@@ -110,7 +103,7 @@ body {
 #next-btn {
   background: #001e4d;
   color: #fff;
-  font-family: "S-CoreDream-3Light";
+  font-family: "DungGeunMo";
   font-weight: 500px;
   border: solid 1px #fff;
   padding: 10px;
@@ -124,7 +117,7 @@ body {
   display: none;
   background: #fff;
   color: #001e4d;
-  font-family: "S-CoreDream-3Light";
+  font-family: "DungGeunMo";
   font-weight: 500px;
   border: solid 1px #001e4d;
   padding: 10px;
