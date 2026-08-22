@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="icon" href="/images/favicon.png"/>
+    <link rel="apple-touch-icon" href="/images/favicon.png"/>
+    <style>
+      @font-face {
+        font-family: "DungGeunMo";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        color: #313131;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: "DungGeunMo";
+        height: 100vh;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        display: inline-block;
+      }
+      form {
+        height: 100vh;
+        display: grid;
+        align-content: center;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+      }
+      .inp {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        max-width: 320px;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .inp .label {
+        position: absolute;
+        top: 20px;
+        left: 12px;
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 500;
+        transform-origin: 0 0;
+        transform: translate3d(0, 0, 0);
+        transition: all 0.2s ease;
+        pointer-events: none;
+      }
+      .inp .focus-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /*background: rgba(0, 0, 0, 0.05);*/
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+      .inp input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        border: 0;
+        font-family: inherit;
+        padding: 16px 12px 0 12px;
+        height: 56px;
+        font-size: 18px;
+        font-weight: 400;
+        /*background: rgba(0, 0, 0, 0.02);*/
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        color: #000;
+        transition: all 0.15s ease;
+      }
+      /*
+      .inp input:hover {
+        background: rgba(0, 0, 0, 0.04);
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      }*/
+      .inp input:not(:-moz-placeholder-shown) + .label {
+        color: rgba(0, 0, 0, 0.5);
+        transform: translate3d(0, -12px, 0) scale(0.75);
+      }
+      .inp input:not(:-ms-input-placeholder) + .label {
+        color: rgba(0, 0, 0, 0.5);
+        transform: translate3d(0, -12px, 0) scale(0.75);
+      }
+      .inp input:not(:placeholder-shown) + .label {
+        color: rgba(0, 0, 0, 0.5);
+        transform: translate3d(0, -12px, 0) scale(0.75);
+      }
+      .inp input:focus {
+        /*background: rgba(0, 0, 0, 0.05);*/
+        outline: none;
+        box-shadow: inset 0 -2px 0 #313131;
+      }
+      .inp input:focus + .label {
+        color: #313131;
+        transform: translate3d(0, -12px, 0) scale(0.75);
+      }
+      .inp input:focus + .label + .focus-bg {
+        transform: scaleX(1);
+        transition: all 0.1s ease;
+      }
+
+      p {
+        font-size: 24px;
+        line-height: 2;
+      }
+      .btn {
+        width: 180px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        position: relative;
+        left: 50%;
+        top: 0%;
+        transform: translate(-50%, -50%);
+        -webkit-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+      }
+
+      .text {
+        padding: 0 50px;
+        visibility: hidden;
+      }
+
+      .flip-front,
+      .flip-back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transform-style: flat;
+        transform-style: flat;
+        -webkit-transition: -webkit-transform 0.3s ease-out;
+        -o-transition: -o-transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+        box-sizing: content-box;
+      }
+
+      .flip-front {
+        color: #313131;
+        border: 2px solid #313131;
+        background-color: transparent;
+        -webkit-transform: rotateX(0deg) translateZ(25px);
+        -ms-transform: rotateX(0deg) translateZ(25px);
+        -o-transform: rotateX(0deg) translateZ(25px);
+        transform: rotateX(0deg) translateZ(25px);
+      }
+
+      .flip-back {
+        color: #fff;
+        background-color: #313131;
+        border: 2px solid #313131;
+        -webkit-transform: rotateX(90deg) translateZ(25px);
+        -ms-transform: rotateX(90deg) translateZ(25px);
+        -o-transform: rotateX(90deg) translateZ(25px);
+        transform: rotateX(90deg) translateZ(25px);
+      }
+
+      .btn:hover .flip-front {
+        -webkit-transform: rotateX(-90deg) translateZ(25px);
+        -ms-transform: rotateX(-90deg) translateZ(25px);
+        -o-transform: rotateX(-90deg) translateZ(25px);
+        transform: rotateX(-90deg) translateZ(25px);
+      }
+
+      .btn:hover .flip-back {
+        -webkit-transform: rotateX(0deg) translateZ(25px);
+        -ms-transform: rotateX(0deg) translateZ(25px);
+        -o-transform: rotateX(0deg) translateZ(25px);
+        transform: rotateX(0deg) translateZ(25px);
+      }
+    </style>
+  </head>
+  <body>
+    <form name="name_form" action="./quiz" method="GET">
+      <label for="inp" class="inp">
+        <input type="text" id="inp" name="name" placeholder="&nbsp;" />
+        <span class="label">Name</span>
+        <span class="focus-bg"></span>
+      </label>
+      <p></p>
+      <a class="btn" onclick="document.forms['name_form'].submit();">
+        <span class="text">Text</span>
+        <span class="flip-front">QUIZ</span>
+        <span class="flip-back">START</span>
+      </button>
+    </form>
+  </body>
+</html>

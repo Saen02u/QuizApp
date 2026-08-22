@@ -1,0 +1,39 @@
+services:
+  quiz_db:
+    image: mysql:8.0
+    container_name: quiz_db
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: toshwm
+      MYSQL_PASSWORD: tltmxpaznlwm
+      MYSQL_DATABASE: quiz_db
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+      TZ: Asia/Seoul
+    networks:
+      quiz_net:
+  web:
+    build: .
+    depends_on: 
+      - quiz_db
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    ports:
+      - 8703:3000
+    environment:
+      DB_HOST: quiz_db
+      DB_PORT: 3306
+      DB_USER: toshwm
+      DB_PASSWORD: tltmxpaznlwm
+      DB_DATABASE: quiz_db
+    networks:
+      quiz_net:
+networks:
+  quiz_net:
